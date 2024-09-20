@@ -7,6 +7,7 @@ ENV CC=clang-18
 
 WORKDIR /build
 
+# renovate: datasource=github-releases depName=open-telemetry/opentelemetry-cpp
 ENV OPENTELEMETRY_CPP_VERSION=v1.11.0
 RUN \
     git clone https://github.com/open-telemetry/opentelemetry-cpp.git \

@@ -8,10 +8,9 @@
       "customType": "regex",
       "fileMatch": ["^Dockerfile$"],
       "matchStrings": [
-        "ENV OPENTELEMETRY_CPP_VERSION=(?<currentValue>.*?)\\n"
+        "# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?( registryUrl=(?<registryUrl>.*?))?\\sENV\\s+.*?_VERSION=(?<currentValue>.*)\\s"
       ],
-      "datasourceTemplate": "github-tags",
-      "depNameTemplate": "open-telemetry/opentelemetry-cpp"
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     }
   ]
 }
