@@ -11,8 +11,7 @@
         "ENV OPENTELEMETRY_CPP_VERSION=(?<currentValue>.*?)\\n"
       ],
       "datasourceTemplate": "github-tags",
-      "depNameTemplate": "opentelemetry-cpp",
-      "packageNameTemplate": "opentelemetry/opentelemetry-cpp"
+      "depNameTemplate": "open-telemetry/opentelemetry-cpp"
     }
   ]
 }
