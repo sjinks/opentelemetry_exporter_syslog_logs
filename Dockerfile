@@ -7,7 +7,7 @@ ENV CC=clang-18
 
 WORKDIR /build
 
-ENV OPENTELEMETRY_CPP_VERSION=v1.16.1
+ENV OPENTELEMETRY_CPP_VERSION=v1.11.0
 RUN \
     git clone https://github.com/open-telemetry/opentelemetry-cpp.git \
         --depth=1 -b "${OPENTELEMETRY_CPP_VERSION}" --single-branch && \
