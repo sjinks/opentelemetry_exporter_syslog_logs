@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "local>sjinks/.github:renovate-config"
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["^Dockerfile$"],
+      "matchStrings": [
+        "ENV OPENTELEMETRY_CPP_VERSION=(?<currentValue>.*?)\\n"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "opentelemetry-cpp",
+      "packageNameTemplate": "opentelemetry/opentelemetry-cpp"
+    }
+  ]
+}
