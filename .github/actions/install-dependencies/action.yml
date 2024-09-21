@@ -23,4 +23,4 @@ runs:
         sudo cmake --install build
       env:
         # renovate: datasource=github-releases depName=open-telemetry/opentelemetry-cpp
-        OPENTELEMETRY_CPP_VERSION: v1.16.0
+        OPENTELEMETRY_CPP_VERSION: v1.16.1
