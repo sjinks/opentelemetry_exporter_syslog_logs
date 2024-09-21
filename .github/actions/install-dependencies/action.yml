@@ -32,7 +32,7 @@ runs:
 
     - name: Set up ccache
       uses: hendrikmuhs/ccache-action@ed74d11c0b343532753ecead8a951bb09bb34bc9 # v1.2.14
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.cache-opentelemetry.outputs.cache-hit != 'true'
 
     - name: Install OpenTelemetry
       shell: bash
@@ -43,4 +43,4 @@ runs:
         cmake -B build -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DWITH_DEPRECATED_SDK_FACTORY=OFF -DWITH_NO_DEPRECATED_CODE=ON -DWITH_OTLP_HTTP=OFF -DBUILD_TESTING=OFF -DWITH_BENCHMARK=OFF -DWITH_FUNC_TESTS=OFF -DWITH_EXAMPLES=OFF
         cmake --build build -j2
         sudo cmake --install build
-      if: steps.cache.outputs.cache-hit != 'true'
+      if: steps.cache-opentelemetry.outputs.cache-hit != 'true'
