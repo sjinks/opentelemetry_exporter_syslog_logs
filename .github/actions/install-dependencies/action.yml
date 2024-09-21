@@ -16,6 +16,10 @@ runs:
         # renovate: datasource=github-releases depName=open-telemetry/opentelemetry-cpp
         OPENTELEMETRY_CPP_VERSION: v1.16.1
 
+    - name: Make /usr/local/include and /usr/local/lib writable
+      shell: bash
+      run: sudo chmod 0777 /usr/local/include /usr/local/lib
+
     - name: Cache OpenTelemetry
       id: cache-opentelemetry
       uses: actions/cache@0c45773b623bea8c8e75f6c82b208c3cf94ea4f9 # v4.0.2
