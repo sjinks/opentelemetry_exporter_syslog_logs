@@ -7,7 +7,15 @@ runs:
       shell: bash
       run: |
         sudo apt-get update
-        sudo apt-get install -y ccache clang-tools libgmock-dev libgtest-dev
+        sudo apt-get install -y ccache libgmock-dev libgtest-dev
+
+    - name: Install newer Clang
+      shell: bash
+      run: |
+        wget https://apt.llvm.org/llvm.sh
+        chmod +x ./llvm.sh
+        sudo ./llvm.sh 18
+        sudo apt-get install -y clang-tools-18
 
     - name: Set up ccache
       uses: hendrikmuhs/ccache-action@ed74d11c0b343532753ecead8a951bb09bb34bc9 # v1.2.14
