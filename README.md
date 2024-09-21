@@ -1,5 +1,8 @@
 # opentelemetry_exporter_syslog_logs
 
+[![Build and Test](https://github.com/sjinks/opentelemetry_exporter_syslog_logs/actions/workflows/ci.yml/badge.svg)](https://github.com/sjinks/opentelemetry_exporter_syslog_logs/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/sjinks/opentelemetry_exporter_syslog_logs/actions/workflows/codeql.yml/badge.svg)](https://github.com/sjinks/opentelemetry_exporter_syslog_logs/actions/workflows/codeql.yml)
+
 Exports OpenTelemetry log records to syslog.
 
 ## Installation
