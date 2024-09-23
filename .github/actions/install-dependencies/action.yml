@@ -28,6 +28,7 @@ runs:
           /usr/local/include/opentelemetry
           /usr/local/lib/cmake/opentelemetry-cpp
           /usr/local/lib/libopentelemetry_*
+          !/usr/local/lib/libopentelemetry_exporter_syslog_logs.a
         key: ${{ runner.os }}-opentelemetry-${{ env.OPENTELEMETRY_CPP_VERSION }}
 
     - name: Set up ccache
