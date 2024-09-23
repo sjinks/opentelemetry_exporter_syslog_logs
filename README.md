@@ -2,6 +2,7 @@
 
 [![Build and Test](https://github.com/sjinks/opentelemetry_exporter_syslog_logs/actions/workflows/ci.yml/badge.svg)](https://github.com/sjinks/opentelemetry_exporter_syslog_logs/actions/workflows/ci.yml)
 [![CodeQL](https://github.com/sjinks/opentelemetry_exporter_syslog_logs/actions/workflows/codeql.yml/badge.svg)](https://github.com/sjinks/opentelemetry_exporter_syslog_logs/actions/workflows/codeql.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sjinks_opentelemetry_exporter_syslog_logs&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=sjinks_opentelemetry_exporter_syslog_logs)
 
 Exports OpenTelemetry log records to syslog.
 
