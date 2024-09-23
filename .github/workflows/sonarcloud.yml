@@ -28,6 +28,7 @@ jobs:
           allowed-endpoints:
             analysis-sensorcache-eu-central-1-prod.s3.amazonaws.com:443
             api.github.com:443
+            api.nuget.org:443
             api.sonarcloud.io:443
             azure.archive.ubuntu.com:80
             binaries.sonarsource.com:443
