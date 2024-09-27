@@ -11,12 +11,12 @@
 #include <opentelemetry/sdk/logs/logger_provider.h>
 #include <opentelemetry/sdk/logs/simple_log_record_processor.h>
 
-#include "opentelemetry_exporter_syslog_logs/syslog_exporter_factory.h"
-#include "opentelemetry_exporter_syslog_logs/syslog_interface.h"
+#include "opentelemetry/exporters/wwa/syslog/log_record_exporter_factory.h"
+#include "opentelemetry/exporters/wwa/syslog/syslog_interface.h"
 
 namespace {
 
-class MockedSyslog : public opentelemetry::exporter::logs::SyslogInterface {
+class MockedSyslog : public wwa::opentelemetry::exporter::logs::SyslogInterface {
 public:
     MOCK_METHOD(void, openlog, (opentelemetry::nostd::string_view ident, int option, int facility), (override));
     MOCK_METHOD(void, syslog, (int priority, opentelemetry::nostd::string_view message), (override));
@@ -34,9 +34,9 @@ protected:
         EXPECT_CALL(*this->m_syslog, openlog(testing::Eq(ident), testing::Eq(option), testing::Eq(facility)))
             .Times(testing::Exactly(1));
 
-        auto exporter = opentelemetry::exporter::logs::SyslogLogRecordExporterFactory::Create(
-            ident, std::static_pointer_cast<opentelemetry::exporter::logs::SyslogInterface>(this->m_syslog), option,
-            facility
+        auto exporter = wwa::opentelemetry::exporter::logs::SyslogLogRecordExporterFactory::Create(
+            ident, std::static_pointer_cast<wwa::opentelemetry::exporter::logs::SyslogInterface>(this->m_syslog),
+            option, facility
         );
 
         auto processor = std::make_unique<opentelemetry::sdk::logs::SimpleLogRecordProcessor>(std::move(exporter));
@@ -55,7 +55,7 @@ protected:
 
         testing::Mock::VerifyAndClearExpectations(this->m_syslog.get());
 
-        opentelemetry::exporter::logs::SyslogLogRecordExporterFactory::setSyslogImplementation(nullptr);
+        wwa::opentelemetry::exporter::logs::SyslogLogRecordExporterFactory::setSyslogImplementation(nullptr);
     }
 
     // NOLINTNEXTLINE(*-non-private-member-variables-in-classes)
