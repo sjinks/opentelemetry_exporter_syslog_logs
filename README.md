@@ -61,3 +61,5 @@ void init_logging()
     );
 }
 ```
+
+See [ci/CMakeLists.txt](ci/CMakeLists.txt) and [ci/main.cpp](ci/main.cpp) for an example.
