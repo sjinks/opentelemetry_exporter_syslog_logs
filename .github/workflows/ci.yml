@@ -48,7 +48,9 @@ jobs:
 
       - name: Smoke test
         run: |
+          set -x
           cmake -B build
           cmake --build build
-          ./build/ci
+          ./build/ci-cmake
+          ./build/ci-pkgconfig
         working-directory: ci
