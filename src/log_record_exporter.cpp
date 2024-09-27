@@ -1,4 +1,4 @@
-#include "syslog_exporter.h"
+#include "log_record_exporter.h"
 
 #include <array>
 #include <string>
@@ -54,11 +54,12 @@ std::string stringify_attribute(const opentelemetry::common::AttributeValue& v)
 
 }  // namespace
 
-std::shared_ptr<opentelemetry::exporter::logs::SyslogInterface>
-    opentelemetry::exporter::logs::SyslogLogRecordExporter::syslog{nullptr};
+namespace wwa::opentelemetry::exporter::logs {
 
-opentelemetry::exporter::logs::SyslogLogRecordExporter::SyslogLogRecordExporter(
-    opentelemetry::nostd::string_view ident, int option, int facility
+std::shared_ptr<SyslogInterface> SyslogLogRecordExporter::syslog{nullptr};
+
+SyslogLogRecordExporter::SyslogLogRecordExporter(
+    ::opentelemetry::nostd::string_view ident, int option, int facility
 ) noexcept
 {
     if (!SyslogLogRecordExporter::syslog) {
@@ -68,30 +69,29 @@ opentelemetry::exporter::logs::SyslogLogRecordExporter::SyslogLogRecordExporter(
     SyslogLogRecordExporter::syslog->openlog(ident.data(), option, facility);
 }
 
-opentelemetry::exporter::logs::SyslogLogRecordExporter::~SyslogLogRecordExporter()
+SyslogLogRecordExporter::~SyslogLogRecordExporter()
 {
     SyslogLogRecordExporter::syslog->closelog();
 }
 
-std::unique_ptr<opentelemetry::sdk::logs::Recordable>
-opentelemetry::exporter::logs::SyslogLogRecordExporter::MakeRecordable() noexcept
+std::unique_ptr<::opentelemetry::sdk::logs::Recordable> SyslogLogRecordExporter::MakeRecordable() noexcept
 {
-    return std::make_unique<opentelemetry::sdk::logs::ReadWriteLogRecord>();
+    return std::make_unique<::opentelemetry::sdk::logs::ReadWriteLogRecord>();
 }
 
 // NOLINTNEXTLINE(bugprone-exception-escape)
-opentelemetry::sdk::common::ExportResult opentelemetry::exporter::logs::SyslogLogRecordExporter::Export(
-    const opentelemetry::nostd::span<std::unique_ptr<opentelemetry::sdk::logs::Recordable>>& records
+::opentelemetry::sdk::common::ExportResult SyslogLogRecordExporter::Export(
+    const ::opentelemetry::nostd::span<std::unique_ptr<::opentelemetry::sdk::logs::Recordable>>& records
 ) noexcept
 {
     if (this->is_shutdown.load()) {
-        return opentelemetry::sdk::common::ExportResult::kFailure;
+        return ::opentelemetry::sdk::common::ExportResult::kFailure;
     }
 
     for (auto& record : records) {
-        auto log_record = std::unique_ptr<opentelemetry::sdk::logs::ReadWriteLogRecord>(
+        auto log_record = std::unique_ptr<::opentelemetry::sdk::logs::ReadWriteLogRecord>(
             // NOLINTNEXTLINE(*-type-static-cast-downcast)
-            static_cast<opentelemetry::sdk::logs::ReadWriteLogRecord*>(record.release())
+            static_cast<::opentelemetry::sdk::logs::ReadWriteLogRecord*>(record.release())
         );
 
         if (log_record == nullptr) {
@@ -111,23 +111,21 @@ opentelemetry::sdk::common::ExportResult opentelemetry::exporter::logs::SyslogLo
         SyslogLogRecordExporter::syslog->syslog(priority, msg);
     }
 
-    return opentelemetry::sdk::common::ExportResult::kSuccess;
+    return ::opentelemetry::sdk::common::ExportResult::kSuccess;
 }
 
-bool opentelemetry::exporter::logs::SyslogLogRecordExporter::ForceFlush(std::chrono::microseconds) noexcept
+bool SyslogLogRecordExporter::ForceFlush(std::chrono::microseconds) noexcept
 {
     return true;
 }
 
-bool opentelemetry::exporter::logs::SyslogLogRecordExporter::Shutdown(std::chrono::microseconds) noexcept
+bool SyslogLogRecordExporter::Shutdown(std::chrono::microseconds) noexcept
 {
     this->is_shutdown.store(true);
     return true;
 }
 
-void opentelemetry::exporter::logs::SyslogLogRecordExporter::setSyslogImplementation(
-    const std::shared_ptr<opentelemetry::exporter::logs::SyslogInterface>& impl
-)
+void SyslogLogRecordExporter::setSyslogImplementation(const std::shared_ptr<SyslogInterface>& impl)
 {
     if (!impl) {
         SyslogLogRecordExporter::syslog = std::make_shared<DefaultSyslogImplementation>();
@@ -136,3 +134,5 @@ void opentelemetry::exporter::logs::SyslogLogRecordExporter::setSyslogImplementa
         SyslogLogRecordExporter::syslog = impl;
     }
 }
+
+}  // namespace wwa::opentelemetry::exporter::logs

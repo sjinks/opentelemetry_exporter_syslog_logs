@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.25)
 
-project(opentelemetry_exporter_syslog_logs VERSION 1.0.0 LANGUAGES CXX)
-set(CMAKE_VERBOSE_MAKEFILE ON CACHE BOOL "ON")
+set(EXPORT_COMPILE_COMMANDS ON)
+
+project(wwa_opentelemetry_exporter_syslog_logs VERSION 1.0.0 LANGUAGES CXX)
+set(CMAKE_VERBOSE_MAKEFILE ON)
 
 option(WITH_TESTING "Whether to enable tests" ON)
 option(INSTALL_SYSLOG_EXPORTER "Whether to install the syslog exporter" ON)

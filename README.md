@@ -28,11 +28,11 @@ cmake --install build
 ## Usage
 
 ```cmake
-find_package(opentelemetry_exporter_syslog_logs CONFIG REQUIRED)
+find_package(wwa_opentelemetry_exporter_syslog_logs CONFIG REQUIRED)
 target_link_libraries(
     my_target
     PRIVATE
-        opentelemetry_exporter_syslog_logs::opentelemetry_exporter_syslog_logs
+        wwa::opentelemetry::syslog_log_record_exporter
 )
 ```
 
@@ -40,11 +40,11 @@ target_link_libraries(
 #include <opentelemetry/logs/provider.h>
 #include <opentelemetry/sdk/logs/logger_provider.h>
 #include <opentelemetry/sdk/logs/simple_log_record_processor.h>
-#include <opentelemetry_exporter_syslog_logs/syslog_exporter_factory.h>
+#include <opentelemetry/exporters/wwa/syslog/log_record_exporter_factory.h>
 
 void init_logging()
 {
-    auto exporter = opentelemetry::exporter::logs::SyslogLogRecordExporterFactory::Create(
+    auto exporter = wwa::opentelemetry::exporter::logs::SyslogLogRecordExporterFactory::Create(
         "syslog-identifier"
     );
 

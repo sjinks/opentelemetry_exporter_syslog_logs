@@ -1,15 +1,15 @@
 include(GenerateExportHeader)
 
 set(sources
-    syslog_exporter.cpp
-    syslog_exporter_factory.cpp
+    log_record_exporter.cpp
+    log_record_exporter_factory.cpp
     default_syslog_implementation_p.cpp
 )
 
 set(headers
-    ${CMAKE_CURRENT_BINARY_DIR}/opentelemetry_exporter_syslog_logs_export.h
-    ${CMAKE_SOURCE_DIR}/include/opentelemetry_exporter_syslog_logs/syslog_exporter_factory.h
-    ${CMAKE_SOURCE_DIR}/include/opentelemetry_exporter_syslog_logs/syslog_interface.h
+    ${CMAKE_CURRENT_BINARY_DIR}/wwa_opentelemetry_exporter_syslog_logs_export.h
+    ${CMAKE_SOURCE_DIR}/include/opentelemetry/exporters/wwa/syslog/log_record_exporter_factory.h
+    ${CMAKE_SOURCE_DIR}/include/opentelemetry/exporters/wwa/syslog/syslog_interface.h
 )
 
 add_library(${PROJECT_NAME} ${sources})
@@ -51,12 +51,12 @@ if(INSTALL_SYSLOG_EXPORTER)
         RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
         ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
-        PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}"
+        PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/opentelemetry/exporters/wwa/syslog"
     )
 
     install(EXPORT "${PROJECT_NAME}-target"
         FILE "${PROJECT_NAME}-target.cmake"
-        NAMESPACE "${PROJECT_NAME}::"
+        # NAMESPACE "${PROJECT_NAME}::"
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
     )
 
