@@ -9,7 +9,7 @@ namespace wwa::opentelemetry::exporter::logs {
 // NOLINTNEXTLINE(*-special-member-functions)
 class WWA_OPENTELEMETRY_EXPORTER_SYSLOG_LOGS_EXPORT SyslogInterface {
 public:
-    virtual ~SyslogInterface()                                                                = default;
+    virtual ~SyslogInterface();
     virtual void openlog(::opentelemetry::nostd::string_view ident, int option, int facility) = 0;
     virtual void syslog(int priority, ::opentelemetry::nostd::string_view message)            = 0;
     virtual void closelog()                                                                   = 0;

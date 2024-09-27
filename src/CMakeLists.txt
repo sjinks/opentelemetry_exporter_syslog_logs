@@ -4,6 +4,7 @@ set(sources
     log_record_exporter.cpp
     log_record_exporter_factory.cpp
     default_syslog_implementation_p.cpp
+    syslog_interface.cpp
 )
 
 set(headers
@@ -56,7 +57,6 @@ if(INSTALL_SYSLOG_EXPORTER)
 
     install(EXPORT "${PROJECT_NAME}-target"
         FILE "${PROJECT_NAME}-target.cmake"
-        # NAMESPACE "${PROJECT_NAME}::"
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
     )
 
