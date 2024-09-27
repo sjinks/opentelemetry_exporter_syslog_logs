@@ -2,7 +2,13 @@ cmake_minimum_required(VERSION 3.25)
 
 set(EXPORT_COMPILE_COMMANDS ON)
 
-project(wwa_opentelemetry_exporter_syslog_logs VERSION 1.0.0 LANGUAGES CXX)
+project(
+    wwa_opentelemetry_exporter_syslog_logs
+    VERSION 1.0.0
+    DESCRIPTION "Syslog logs exporter for OpenTelemetry"
+    HOMEPAGE_URL "https://github.com/sjinks/opentelemetry_exporter_syslog_logs"
+    LANGUAGES CXX
+)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 option(WITH_TESTING "Whether to enable tests" ON)

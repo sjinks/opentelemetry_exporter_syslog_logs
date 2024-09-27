@@ -71,4 +71,13 @@ if(INSTALL_SYSLOG_EXPORTER)
         "${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}-config.cmake"
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
     )
+
+    if(BUILD_SHARED_LIBS)
+        set(REQUIRES_SUFFIX ".private")
+    endif()
+    configure_file("${CMAKE_SOURCE_DIR}/cmake/pkg-config.pc.in" "${PROJECT_NAME}.pc" @ONLY)
+    install(
+        FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc"
+        DESTINATION "${CMAKE_INSTALL_LIBDIR}/pkgconfig"
+    )
 endif()
