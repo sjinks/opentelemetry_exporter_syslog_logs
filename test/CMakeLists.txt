@@ -1,6 +1,6 @@
 add_executable(test_logger)
 target_sources(test_logger PRIVATE test_logger.cpp)
-target_link_libraries(test_logger PRIVATE GTest::gtest GTest::gmock GTest::gtest_main ${PROJECT_NAME})
+target_link_libraries(test_logger PRIVATE GTest::gmock GTest::gtest_main ${PROJECT_NAME})
 
 set_target_properties(
     test_logger
