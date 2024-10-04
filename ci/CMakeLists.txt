@@ -1,7 +1,11 @@
 cmake_minimum_required(VERSION 3.25)
 
-project(ci VERSION 1.0.0.1 LANGUAGES CXX)
+project(ci LANGUAGES CXX)
 set(CMAKE_VERBOSE_MAKEFILE ON)
+
+if(DEFINED VCPKG_INSTALLED_DIR)
+    file(MAKE_DIRECTORY "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/include" "${VCPKG_INSTALLED_DIR}/${VCPKG_TARGET_TRIPLET}/debug/include" )
+endif()
 
 include(FindPkgConfig)
 
