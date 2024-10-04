@@ -1,5 +1,3 @@
-include(GenerateExportHeader)
-
 set(sources
     log_record_exporter.cpp
     log_record_exporter_factory.cpp
@@ -8,7 +6,7 @@ set(sources
 )
 
 set(headers
-    ${CMAKE_CURRENT_BINARY_DIR}/wwa_opentelemetry_exporter_syslog_logs_export.h
+    ${CMAKE_SOURCE_DIR}/include/opentelemetry/exporters/wwa/syslog/export.h
     ${CMAKE_SOURCE_DIR}/include/opentelemetry/exporters/wwa/syslog/log_record_exporter_factory.h
     ${CMAKE_SOURCE_DIR}/include/opentelemetry/exporters/wwa/syslog/syslog_interface.h
 )
@@ -21,9 +19,6 @@ target_include_directories(${PROJECT_NAME}
     PUBLIC
         $<INSTALL_INTERFACE:include>
         $<BUILD_INTERFACE:${CMAKE_SOURCE_DIR}/include>
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
-    PRIVATE
-        ${CMAKE_CURRENT_BINARY_DIR}
 )
 
 set_target_properties(
@@ -37,9 +32,8 @@ set_target_properties(
         INTERFACE_COMPILE_FEATURES cxx_std_17
 )
 
-generate_export_header(${PROJECT_NAME} BASE_NAME ${PROJECT_NAME})
 if(NOT BUILD_SHARED_LIBS)
-    set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_FLAGS -DOPENTELEMETRY_EXPORTER_SYSLOG_LOGS_STATIC_DEFINE)
+    target_compile_definitions(${PROJECT_NAME} PUBLIC OPENTELEMETRY_EXPORTER_SYSLOG_LOGS_STATIC_DEFINE)
 endif()
 
 if(INSTALL_SYSLOG_EXPORTER)
@@ -55,7 +49,8 @@ if(INSTALL_SYSLOG_EXPORTER)
         PUBLIC_HEADER DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}/opentelemetry/exporters/wwa/syslog"
     )
 
-    install(EXPORT "${PROJECT_NAME}-target"
+    install(
+        EXPORT "${PROJECT_NAME}-target"
         FILE "${PROJECT_NAME}-target.cmake"
         DESTINATION "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}"
     )

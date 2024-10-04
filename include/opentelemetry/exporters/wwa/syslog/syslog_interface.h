@@ -2,7 +2,7 @@
 #define F6CC3A7F_2A2D_4616_B15D_A7739D98F053
 
 #include <opentelemetry/nostd/string_view.h>
-#include "wwa_opentelemetry_exporter_syslog_logs_export.h"
+#include "export.h"
 
 namespace wwa::opentelemetry::exporter::logs {
 

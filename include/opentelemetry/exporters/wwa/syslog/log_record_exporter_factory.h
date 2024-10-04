@@ -5,8 +5,8 @@
 #include <opentelemetry/nostd/string_view.h>
 #include <opentelemetry/sdk/logs/exporter.h>
 
+#include "export.h"
 #include "syslog_interface.h"
-#include "wwa_opentelemetry_exporter_syslog_logs_export.h"
 
 namespace wwa::opentelemetry::exporter::logs {
 
@@ -22,9 +22,7 @@ public:
     Create(::opentelemetry::nostd::string_view ident, const std::shared_ptr<SyslogInterface>& syslog);
 
     static std::unique_ptr<::opentelemetry::sdk::logs::LogRecordExporter> Create(
-        ::opentelemetry::nostd::string_view ident,
-        const std::shared_ptr<SyslogInterface>& syslog,
-        int option,
+        ::opentelemetry::nostd::string_view ident, const std::shared_ptr<SyslogInterface>& syslog, int option,
         int facility
     );
 
