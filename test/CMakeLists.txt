@@ -12,5 +12,7 @@ set_target_properties(
         VISIBILITY_INLINES_HIDDEN ON
 )
 
-include(GoogleTest)
-gtest_discover_tests(test_logger)
+if(NOT CMAKE_CROSSCOMPILING)
+    include(GoogleTest)
+    gtest_discover_tests(test_logger)
+endif()

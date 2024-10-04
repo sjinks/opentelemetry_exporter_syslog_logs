@@ -4,7 +4,7 @@ set(EXPORT_COMPILE_COMMANDS ON)
 
 project(
     wwa_opentelemetry_exporter_syslog_logs
-    VERSION 1.0.0
+    VERSION 1.0.1
     DESCRIPTION "Syslog logs exporter for OpenTelemetry"
     HOMEPAGE_URL "https://github.com/sjinks/opentelemetry_exporter_syslog_logs"
     LANGUAGES CXX
