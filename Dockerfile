@@ -15,7 +15,7 @@ RUN \
     cd opentelemetry-cpp && \
     cmake \
         -B build \
-        -DWITH_DEPRECATED_SDK_FACTORY=OFF -DWITH_NO_DEPRECATED_CODE=ON -DWITH_OTLP_HTTP=OFF \
+        -DWITH_NO_DEPRECATED_CODE=ON -DWITH_OTLP_HTTP=OFF \
         -DBUILD_TESTING=OFF -DWITH_BENCHMARK=OFF -DWITH_FUNC_TESTS=OFF -DWITH_EXAMPLES=OFF && \
     cmake --build build -j "$(nproc)" && \
     cmake --install build

@@ -14,6 +14,8 @@ set(CMAKE_VERBOSE_MAKEFILE ON)
 option(WITH_TESTING "Whether to enable tests" ON)
 option(INSTALL_SYSLOG_EXPORTER "Whether to install the syslog exporter" ON)
 
+include(FetchContent)
+
 # Logs signal became stable in v1.11.0, see https://github.com/open-telemetry/opentelemetry-cpp/pull/2229, https://github.com/open-telemetry/opentelemetry-cpp/blob/v1.11.0/CHANGELOG.md
 find_package(opentelemetry-cpp CONFIG REQUIRED)
 if(opentelemetry-cpp_VERSION VERSION_LESS 1.11.0)
@@ -25,13 +27,24 @@ add_subdirectory(src)
 if(WITH_TESTING)
     include(FindGTest)
     find_package(GTest CONFIG COMPONENTS gtest gmock)
-    if(TARGET GTest::gtest AND TARGET GTest::gmock)
-        include(CTest)
-        enable_testing()
-        add_subdirectory(test)
-    else()
-        message(WARNING "GTest not found, tests will not be built")
+    if(NOT TARGET GTest::gtest OR NOT TARGET GTest::gmock)
+        message(STATUS "Google Test not found, fetching it from GitHub")
+        # renovate: datasource=github-tags depName=google/googletest
+        set(GTEST_VERSION "v1.15.2")
+        FetchContent_Declare(
+            googletest
+            GIT_REPOSITORY https://github.com/google/googletest
+            GIT_TAG "${GTEST_VERSION}"
+            GIT_SHALLOW ON
+        )
+
+        set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+        FetchContent_MakeAvailable(googletest)
     endif()
+
+    include(CTest)
+    enable_testing()
+    add_subdirectory(test)
 endif()
 
 find_program(CLANG_FORMAT NAMES clang-format)
