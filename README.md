@@ -16,7 +16,7 @@ cmake --install build
 
 **Dependencies:** [opentelemetry-cpp](https://github.com/open-telemetry/opentelemetry-cpp) >= 1.11.0
 
-**Development Dependencies:** [Google Test with GMock](https://github.com/google/googletest) (required to build and run tests)
+**Development Dependencies:** [Google Test with GMock](https://github.com/google/googletest) (will be downloaded if not present)
 
 ### CMake Options
 
