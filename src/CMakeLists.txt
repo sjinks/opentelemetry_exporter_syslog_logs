@@ -3,6 +3,7 @@ set(sources
     log_record_exporter_factory.cpp
     default_syslog_implementation_p.cpp
     syslog_interface.cpp
+    recordable.cpp
 )
 
 set(headers
