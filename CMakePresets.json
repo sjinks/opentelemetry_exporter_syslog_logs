@@ -45,10 +45,60 @@
             }
         },
         {
+            "name": "mm-clang",
+            "description": "Maintainer mode build with clang",
+            "inherits": "base",
+            "hidden": false,
+            "cacheVariables": {
+                "ENABLE_MAINTAINER_MODE": "ON",
+                "CMAKE_CXX_COMPILER": "clang++"
+            }
+        },
+        {
+            "name": "mm-gcc",
+            "description": "Maintainer mode build with gcc",
+            "inherits": "base",
+            "hidden": false,
+            "cacheVariables": {
+                "ENABLE_MAINTAINER_MODE": "ON",
+                "CMAKE_CXX_COMPILER": "g++"
+            }
+        },
+        {
             "name": "debug-vcpkg",
             "description": "Debug + vcpkg",
             "inherits": "base-vcpkg",
             "hidden": false
+        },
+        {
+            "name": "asan",
+            "description": "AddressSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "ASAN"
+            }
+        },
+        {
+            "name": "tsan",
+            "description": "ThreadSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "TSAN"
+            }
+        },
+        {
+            "name": "ubsan",
+            "description": "UndefinedBehaviorSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "cacheVariables": {
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_BUILD_TYPE": "UBSAN"
+            }
         }
     ],
     "buildPresets": [
@@ -79,11 +129,46 @@
             "configurePreset": "release"
         },
         {
+            "name": "mm-clang",
+            "description": "Maintainer mode build with clang",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "mm-clang"
+        },
+        {
+            "name": "mm-gcc",
+            "description": "Maintainer mode build with gcc",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "mm-gcc"
+        },
+        {
             "name": "debug-vcpkg",
             "description": "Debug + vcpkg",
             "inherits": "base",
             "hidden": false,
             "configurePreset": "debug-vcpkg"
+        },
+        {
+            "name": "asan",
+            "description": "AddressSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "asan"
+        },
+        {
+            "name": "tsan",
+            "description": "ThreadSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "tsan"
+        },
+        {
+            "name": "ubsan",
+            "description": "UndefinedBehaviorSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "ubsan"
         }
     ],
     "testPresets": [
@@ -117,11 +202,46 @@
             "configurePreset": "release"
         },
         {
+            "name": "mm-clang",
+            "description": "Maintainer mode build with clang",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "mm-clang"
+        },
+        {
+            "name": "mm-gcc",
+            "description": "Maintainer mode build with gcc",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "mm-gcc"
+        },
+        {
             "name": "debug-vcpkg",
             "description": "Debug + vcpkg",
             "inherits": "base",
             "hidden": false,
             "configurePreset": "debug-vcpkg"
+        },
+        {
+            "name": "asan",
+            "description": "AddressSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "asan"
+        },
+        {
+            "name": "tsan",
+            "description": "ThreadSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "tsan"
+        },
+        {
+            "name": "ubsan",
+            "description": "UndefinedBehaviorSanitizer build",
+            "inherits": "base",
+            "hidden": false,
+            "configurePreset": "ubsan"
         }
     ]
 }

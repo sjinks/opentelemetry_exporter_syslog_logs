@@ -37,6 +37,10 @@ if(NOT BUILD_SHARED_LIBS)
     target_compile_definitions(${PROJECT_NAME} PUBLIC OPENTELEMETRY_EXPORTER_SYSLOG_LOGS_STATIC_DEFINE)
 endif()
 
+if(ENABLE_MAINTAINER_MODE)
+    target_compile_options(${PROJECT_NAME} PRIVATE ${CMAKE_CXX_FLAGS_MM})
+endif()
+
 if(INSTALL_SYSLOG_EXPORTER)
     include(GNUInstallDirs)
     include(CMakePackageConfigHelpers)
