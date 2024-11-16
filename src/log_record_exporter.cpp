@@ -11,6 +11,7 @@
 
 namespace wwa::opentelemetry::exporter::logs {
 
+// NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
 std::shared_ptr<SyslogInterface> SyslogLogRecordExporter::syslog{nullptr};
 
 SyslogLogRecordExporter::SyslogLogRecordExporter(

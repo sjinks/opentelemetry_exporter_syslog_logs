@@ -41,6 +41,7 @@ public:
 
 private:
     std::atomic<bool> is_shutdown{false};
+    // NOLINTNEXTLINE(cppcoreguidelines-avoid-non-const-global-variables)
     static std::shared_ptr<SyslogInterface> syslog;
 
     static void process_record(const Recordable* record);
