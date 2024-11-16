@@ -90,7 +90,7 @@ TEST_F(SyslogExporterTest, AdvancedTest)
     const opentelemetry::nostd::string_view name    = "somelib";
     const opentelemetry::nostd::string_view version = "1.0";
     const std::vector<opentelemetry::nostd::string_view> message{"Part 1", "Part 2"};
-    std::int64_t event_id                              = 12345;
+    const std::int64_t event_id                        = 12345;
     const opentelemetry::nostd::string_view event_name = "event_name";
 
     std::array<const std::uint8_t, opentelemetry::trace::TraceId::kSize> trace_id_raw = {
