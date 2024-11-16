@@ -48,11 +48,11 @@ struct stringifier {
             strings.push_back(str(item));
         }
 
-        return data.size() > 0 ? std::accumulate(
-                                     std::next(data.begin()), data.end(), str(*data.begin()),
-                                     [&str](const std::string& a, const T& b) { return a + ", " + str(b); }
-                                 )
-                               : std::string{};
+        return !data.empty() ? std::accumulate(
+                                   std::next(data.begin()), data.end(), str(*data.begin()),
+                                   [&str](const std::string& a, const T& b) { return a + ", " + str(b); }
+                               )
+                             : std::string{};
     }
 };
 

@@ -113,7 +113,7 @@ private:
     std::unique_ptr<TraceState> m_trace_state;
 
     std::int64_t m_event_id = 0;
-    int m_severity;
+    int m_severity          = 1;
 };
 
 }  // namespace wwa::opentelemetry::exporter::logs
