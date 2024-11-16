@@ -13,6 +13,8 @@
 
 namespace wwa::opentelemetry::exporter::logs {
 
+class Recordable;
+
 class SyslogLogRecordExporter final : public ::opentelemetry::sdk::logs::LogRecordExporter {
 public:
     explicit SyslogLogRecordExporter(
@@ -40,6 +42,8 @@ public:
 private:
     std::atomic<bool> is_shutdown{false};
     static std::shared_ptr<SyslogInterface> syslog;
+
+    static void process_record(const Recordable* record);
 };
 
 }  // namespace wwa::opentelemetry::exporter::logs
