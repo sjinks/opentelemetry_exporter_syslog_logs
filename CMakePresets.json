@@ -9,7 +9,7 @@
         {
             "name": "base",
             "hidden": true,
-            "binaryDir": "${sourceDir}/build-${presetName}",
+            "binaryDir": "${sourceDir}/build",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "CMAKE_EXPORT_COMPILE_COMMANDS": "YES",
@@ -26,8 +26,7 @@
             "name": "default",
             "description": "Default build",
             "inherits": "base",
-            "hidden": false,
-            "binaryDir": "${sourceDir}/build"
+            "hidden": false
         },
         {
             "name": "debug",
