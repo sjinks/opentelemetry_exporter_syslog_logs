@@ -64,7 +64,7 @@ if(WITH_TESTING)
     if(NOT TARGET GTest::gtest OR NOT TARGET GTest::gmock)
         message(STATUS "Google Test not found, fetching it from GitHub")
         # renovate: datasource=github-tags depName=google/googletest
-        set(GTEST_VERSION "v1.15.2")
+        set(GTEST_VERSION "v1.16.0")
         FetchContent_Declare(
             googletest
             GIT_REPOSITORY https://github.com/google/googletest
