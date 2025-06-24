@@ -3,7 +3,7 @@ get_filename_component(WWA_OTEL_SYSLOG_EXPORTER_CMAKE_DIR "${CMAKE_CURRENT_LIST_
 list(APPEND CMAKE_MODULE_PATH ${WWA_OTEL_SYSLOG_EXPORTER_CMAKE_DIR})
 
 include(CMakeFindDependencyMacro)
-find_dependency(opentelemetry-cpp QUIET REQUIRED COMPONENTS logs)
+find_dependency(opentelemetry-cpp QUIET REQUIRED COMPONENTS sdk)
 if(opentelemetry-cpp_VERSION VERSION_LESS 1.11.0)
     message(FATAL_ERROR "opentelemetry-cpp version must be at least 1.11.0, ${opentelemetry-cpp_VERSION} found")
 endif()
