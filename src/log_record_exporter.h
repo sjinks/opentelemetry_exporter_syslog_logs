@@ -30,8 +30,8 @@ public:
 
     std::unique_ptr<::opentelemetry::sdk::logs::Recordable> MakeRecordable() noexcept override;
 
-    ::opentelemetry::sdk::common::ExportResult
-    Export(const ::opentelemetry::nostd::span<std::unique_ptr<::opentelemetry::sdk::logs::Recordable>>& records
+    ::opentelemetry::sdk::common::ExportResult Export(
+        const ::opentelemetry::nostd::span<std::unique_ptr<::opentelemetry::sdk::logs::Recordable>>& records
     ) noexcept override;
 
     bool ForceFlush(std::chrono::microseconds timeout = (std::chrono::microseconds::max)()) noexcept override;

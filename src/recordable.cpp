@@ -87,8 +87,9 @@ void Recordable::SetBody(const ::opentelemetry::common::AttributeValue& message)
     this->m_body = ::opentelemetry::nostd::visit(stringifier{}, message);
 }
 
-void Recordable::
-    SetAttribute(::opentelemetry::nostd::string_view, const ::opentelemetry::common::AttributeValue&) noexcept
+void Recordable::SetAttribute(
+    ::opentelemetry::nostd::string_view, const ::opentelemetry::common::AttributeValue&
+) noexcept
 {
     // We don't use attributes
 }
