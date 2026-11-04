@@ -14,7 +14,7 @@ runs:
       run: echo "OPENTELEMETRY_CPP_VERSION=${OPENTELEMETRY_CPP_VERSION}" >> "${GITHUB_ENV}"
       env:
         # renovate: datasource=github-releases depName=open-telemetry/opentelemetry-cpp
-        OPENTELEMETRY_CPP_VERSION: v1.25.0
+        OPENTELEMETRY_CPP_VERSION: v1.30.0
 
     - name: Make /usr/local/include and /usr/local/lib writable
       shell: bash
@@ -32,7 +32,7 @@ runs:
         key: ${{ runner.os }}-opentelemetry-${{ env.OPENTELEMETRY_CPP_VERSION }}
 
     - name: Set up ccache
-      uses: hendrikmuhs/ccache-action@5ebbd400eff9e74630f759d94ddd7b6c26299639 # v1.2.20
+      uses: hendrikmuhs/ccache-action@f09c25b45002a07be2955cbe52e8cee55643f89d # v1.2.24
       if: steps.cache-opentelemetry.outputs.cache-hit != 'true'
 
     - name: Install OpenTelemetry
