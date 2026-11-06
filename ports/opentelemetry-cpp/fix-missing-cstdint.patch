@@ -1,0 +1,8 @@
+diff --git a/api/include/opentelemetry/logs/severity.h b/api/include/opentelemetry/logs/severity.h
+--- a/api/include/opentelemetry/logs/severity.h
++++ b/api/include/opentelemetry/logs/severity.h
+@@ -6,2 +6,4 @@
++#include <cstdint>
++
+ #include "opentelemetry/nostd/string_view.h"
+ #include "opentelemetry/version.h"

@@ -63,9 +63,9 @@ jobs:
         uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ runner.temp }}/vcpkg-binary-cache
-          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ matrix.triplet }}-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json', 'ci/vcpkg.json', 'ci/vcpkg-configuration.json') }}-${{ steps.cache-inputs.outputs.vcpkg }}-${{ steps.cache-inputs.outputs.image }}
+          key: vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ matrix.triplet }}-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json', 'ci/vcpkg.json', 'ci/vcpkg-configuration.json', 'ports/**') }}-${{ steps.cache-inputs.outputs.vcpkg }}-${{ steps.cache-inputs.outputs.image }}
           restore-keys: |
-            vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ matrix.triplet }}-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json', 'ci/vcpkg.json', 'ci/vcpkg-configuration.json') }}-
+            vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ matrix.triplet }}-${{ hashFiles('vcpkg.json', 'vcpkg-configuration.json', 'ci/vcpkg.json', 'ci/vcpkg-configuration.json', 'ports/**') }}-
             vcpkg-${{ runner.os }}-${{ runner.arch }}-${{ matrix.triplet }}-
 
       - name: Build
